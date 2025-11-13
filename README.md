@@ -1,6 +1,6 @@
 # Soveltava Matematiikka ja fysiikka ohjelmoinnissa
 
-## 📊 Python — PhyPhox Kiihtyvyysanalyysi
+## 📊 Python — PhyPhox Data-analyysi
 
 **Tekijä:** Sara Vehviläinen  
 **Oppilaitos:** Oulun ammattikorkeakoulu  
@@ -9,12 +9,17 @@
 
 ---
 
-### 🧩 Tehtävän kuvaus
-Tämä projekti analysoi PhyPhox-sovelluksella kerättyä kiihtyvyysdataa Python-ohjelmalla. Mittauksessa liikutettiin puhelinta eri suuntiin ~20 sekunnin ajan ja analysoitiin tulokset kolmessa koordinaattisuunnassa (x, y, z).
+### 🧩 Projektien kuvaus
+Tämä repositorio sisältää kaksi PhyPhox-sovelluksella kerätyn datan analyysiprojektia:
 
-Tehtävä on osa Soveltava matematiikka ja fysiikka -kurssia.
+1. **Fysiikka1:** Kiihtyvyysanalyysi (liikuttelu)
+2. **Fysiikka2:** Askelmittari (kävelyanalyysi)
+
+Molemmat tehtävät analysoidaan Python-ohjelmilla ja ovat osa Soveltava matematiikka ja fysiikka -kurssia.
 
 ---
+
+## 🎯 FYSIIKKA1: Kiihtyvyysanalyysi
 
 ### 📐 Analyysiperusteet
 - **Mittausaika:** 19.7 sekuntia
@@ -25,9 +30,7 @@ Tehtävä on osa Soveltava matematiikka ja fysiikka -kurssia.
   - Z-komponentti (syvyyssuunta)
 - **Absoluuttinen kiihtyvyys:** √(x² + y² + z²)
 
----
-
-## ✨ Toiminnallisuus
+### ✨ Toiminnallisuus
 - PhyPhox-datan lukeminen CSV-muodosta
 - Kiihtyvyyskomponenttien visualisointi matplotlib-kirjastolla
 - Automaattinen Word-dokumentin luonti kaikilla kuvaajilla
@@ -36,59 +39,102 @@ Tehtävä on osa Soveltava matematiikka ja fysiikka -kurssia.
 
 ---
 
+## 🚶 FYSIIKKA2: Askelmittari
+
+### 📐 Analyysiperusteet
+- **Mittaustyyppi:** Kävelyanalyysi PhyPhox-kiihtyvyysdatasta
+- **Menetelmät:** 
+  - Tehospektrianalyysi (askeltaajuuden löytäminen)
+  - Band-pass suodatus (hälyn poisto)
+  - Askeleiden tunnistus (huiput + nollakohtien ylitykset)
+- **Automaattiset toiminnot:**
+  - Sarakkeiden tunnistus CSV:stä
+  - Parhaan signaalin valinta
+  - Kuvaajien tallennus PNG-muotoon
+
+### ✨ Toiminnallisuus
+- Automaattinen CSV-datan lukeminen ja sarakkeiden tunnistus
+- Askeltaajuuden löytäminen tehospektrianalyysilla
+- Signaalin suodatus band-pass-menetelmällä
+- Askelten laskenta kahdella menetelmällä (vertailu)
+- Automaattinen raportointi ja kuvaajien tallennus
+
+---
+
 ## 🛠️ Käytetyt teknologiat ja kirjastot
 - **Python 3**
 - **Pandas** - Datan käsittely ja analyysi
 - **Matplotlib** - Kuvaajien piirtäminen ja visualisointi
 - **NumPy** - Numeerinen laskenta
+- **SciPy** - Signaalien käsittely (askelmittari)
 - **python-docx** - Word-dokumenttien automaattinen luonti
 - **PhyPhox** - Mittausdatan keräys älypuhelimella
 
 ---
 
 
-## 📊 Analyysin suorittaminen
-1. **Solu 1:** Lataa PhyPhox CSV-data ja näytä ensimmäiset rivit
-2. **Solu 2:** Piirrä peruskuvaaja kaikille komponenteille
-3. **Solu 3:** Luo automaattisesti Word-dokumentti kaikilla kuvaajilla
-
----
-
-## 📁 Projektikansio
+## � Projektirakenne
 ```plaintext
-Fysiikka1/
-├── README.md                           # Projektin dokumentaatio
-├── datan_kuvajaa.ipynb                # Python-analyysi (Jupyter Notebook)
-├── Raw Data.csv                       # PhyPhox mittausdata
-├── Kiihtyvyys_kuva.jpg               # Puhelimen ruutukaappaus
-├── Tehtava1_palautus_Sara_Vehvilainen.docx  # Lopullinen palautus
-├── Tehtava1_palautus_Sara_Vehvilainen.pdf   # PDF-versio
-├── kuvaajat/                          # Erilliset PNG-kuvaajat
-│   ├── 01_yhdistetty.png             # Kaikki komponentit yhdessä
-│   ├── 02_x_komponentti.png          # X-komponentti erikseen
-│   ├── 03_y_komponentti.png          # Y-komponentti erikseen
-│   └── 04_z_komponentti.png          # Z-komponentti erikseen
-└── meta/                              # PhyPhox metadata
-    ├── device.csv                     # Laitetiedot ja anturitiedot
-    └── time.csv                       # Aikaleimoja ja synkronointitiedot
+Soveltava_fysiikka/
+├── README.md                          # Projektien dokumentaatio
+├── Fysiikka1/                         # Kiihtyvyysanalyysi
+│   ├── datan_kuvajaa.ipynb           # Python-analyysi (Jupyter Notebook)
+│   ├── kiihtyvyys.csv                # PhyPhox mittausdata
+│   ├── Kiihtyvyys_kuva.jpg          # Puhelimen ruutukaappaus
+│   ├── Tehtava1_palautus_Sara_Vehvilainen.docx  # Lopullinen palautus
+│   ├── Tehtava1_palautus_Sara_Vehvilainen.pdf   # PDF-versio
+│   ├── kuvaajat/                     # Erilliset PNG-kuvaajat
+│   │   ├── 01_yhdistetty.png        
+│   │   ├── 02_x_komponentti.png     
+│   │   ├── 03_y_komponentti.png     
+│   │   └── 04_z_komponentti.png     
+│   └── meta/                         # PhyPhox metadata
+│       ├── device.csv               
+│       └── time.csv                 
+└── Fysiikka2/                         # Askelmittari
+    ├── askelmittari.ipynb            # Python askelmittari-analyysi
+    ├── walk.csv                      # PhyPhox kävelymittausdata
+    ├── Askelmittari_kuva.png         # Puhelimen ruutukaappaus
+    ├── Tehtava2_Askelmittari_Palautus_Sara_Vehvilainen.docx  # Palautus
+    ├── Tehtava2_Askelmittari_Palautus_Sara_Vehvilainen.pdf   # PDF-versio
+    ├── 01_alkuperaiset_mittaukset.png # Automaattisesti luodut kuvaajat
+    ├── 02_tehospektrit.png           
+    ├── 03_suodatus.png               
+    ├── 04_askeleiden_tunnistus.png   
+    └── meta/                         # PhyPhox metadata
+        ├── device.csv               
+        └── time.csv                 
 ```
 
 ### 🎯 Oppimistavoitteet
+#### Fysiikka1:
 - PhyPhox-mittausdatan keräys ja käsittely
 - Python-datan-analyysi pandas-kirjastolla
 - Tieteellisten kuvaajien luominen matplotlib-kirjastolla
 - Automaattinen raportointi python-docx-kirjastolla
 - Kiihtyvyyskomponenttien ymmärtäminen fysikaalisesti
-- CSV-datan lukeminen ja käsittely Pythonilla
+
+#### Fysiikka2:
+- Signaalien käsittely ja suodatus (SciPy)
+- Tehospektrianalyysi ja taajuustarkastelu
+- Automaattiset algoritmit (huippujen ja nollakohtien tunnistus)
+- Fysikaaliset mittausmenetelmät (askelmittari)
+- Kahden menetelmän vertailu ja validointi
 
 ---
 
 ### 📝 Huomioita
+#### Fysiikka1:
 - PhyPhox tallentaa datan tieteellisessä notaatiossa (E-notaatio)
 - Aika mitataan sekunteina mittauksen alusta
 - Kiihtyvyys mitataan m/s² -yksikössä
 - Absoluuttinen kiihtyvyys lasketaan automaattisesti PhyPhoxissa
-- Word-dokumentti luodaan automaattisesti väliaikaisten PNG-tiedostojen kautta
+
+#### Fysiikka2:
+- Askelmittari käyttää signaalin suodatusta hälyn poistoon
+- Kaksi laskumenetelmää antaa vertailukelpoisia tuloksia
+- Automaattinen sarakkeiden tunnistus toimii eri PhyPhox-versioilla
+- Kuvaajat tallennetaan automaattisesti PNG-muotoon
 
 ---
 
@@ -98,6 +144,7 @@ Fysiikka1/
 - [Pandas Documentation](https://pandas.pydata.org/docs/) - Datan käsittelyn perusteet
 - [Matplotlib Documentation](https://matplotlib.org/stable/contents.html) - Kuvaajien piirtäminen
 - [NumPy Documentation](https://numpy.org/doc/) - Numeerinen laskenta
+- [SciPy Documentation](https://scipy.org/doc/) - Signaalien käsittely ja tieteellinen laskenta
 - [Python-docx Documentation](https://python-docx.readthedocs.io/) - Word-dokumenttien luonti
 
 ### PhyPhox ja fysiikka:
